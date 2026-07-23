@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+@keyframes glow { 0%,100%{ opacity:.55 } 50%{ opacity:1 } }
+@keyframes float { 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-14px) } }
+@keyframes spin { from{ transform:rotate(0deg) } to{ transform:rotate(360deg) } }
+body{margin:0;background:#0a0a0c;font-family:'Inter',sans-serif}
+::selection{ background:#c8ff4d; color:#0a0a0c }
+</style>
+</helmet>
+
+<div style="background:#0a0a0c; color:#f2f2f0; min-height:100vh; position:relative; overflow:hidden;">
+
+  <div style="position:fixed; top:-20%; left:-10%; width:60vw; height:60vw; max-width:900px; max-height:900px; background:radial-gradient(circle, {{accentA}}22 0%, transparent 70%); pointer-events:none; z-index:0;"></div>
+  <div style="position:fixed; bottom:-20%; right:-10%; width:55vw; height:55vw; max-width:800px; max-height:800px; background:radial-gradient(circle, {{accentB}}1f 0%, transparent 70%); pointer-events:none; z-index:0;"></div>
+
+  <nav style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:20px 48px; background:rgba(10,10,12,0.55); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border-bottom:1px solid rgba(255,255,255,0.08);">
+    <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18px; letter-spacing:-0.02em;">{{name}}<span style="color:{{accentA}}">.</span></div>
+    <div style="display:flex; gap:36px; font-size:14px; font-weight:500; color:rgba(242,242,240,0.7);">
+      <a href="#about" style="color:inherit; text-decoration:none;">Обо мне</a>
+      <a href="#skills" style="color:inherit; text-decoration:none;">Навыки</a>
+      <a href="#work" style="color:inherit; text-decoration:none;">Проекты</a>
+      <a href="#music" style="color:inherit; text-decoration:none;">Музыка</a>
+      <a href="#logos" style="color:inherit; text-decoration:none;">Логотипы</a>
+      <a href="#contact" style="color:inherit; text-decoration:none;">Контакты</a>
+    </div>
+    <a href="#contact" style="font-size:13px; font-weight:600; padding:10px 20px; border-radius:100px; background:{{accentA}}; color:#0a0a0c; text-decoration:none;">Связаться</a>
+  </nav>
+
+  <section style="position:relative; z-index:1; min-height:88vh; display:flex; flex-direction:column; justify-content:center; padding:0 48px; max-width:1200px; margin:0 auto;">
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:28px;">
+      <span style="width:8px; height:8px; border-radius:50%; background:{{accentA}}; animation:glow 2s ease-in-out infinite;"></span>
+      <span style="font-family:'Space Grotesk',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,242,240,0.6);">Открыт(а) для проектов</span>
+    </div>
+    <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(48px,8vw,108px); line-height:0.98; letter-spacing:-0.03em; margin:0;">
+      {{heroLine1}}<br>
+      <span style="color:{{accentA}}; font-style:italic; font-weight:500;">{{heroLine2}}</span>
+    </h1>
+    <p style="max-width:640px; font-size:20px; line-height:1.55; color:rgba(242,242,240,0.7); margin:32px 0 0;">{{heroSub}}</p>
+    <div style="display:flex; gap:16px; margin-top:44px; flex-wrap:wrap;">
+      <a href="#contact" style="padding:16px 32px; border-radius:100px; background:{{accentA}}; color:#0a0a0c; font-weight:600; font-size:15px; text-decoration:none;">Обсудить проект</a>
+      <a href="#skills" style="padding:16px 32px; border-radius:100px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); backdrop-filter:blur(10px); color:#f2f2f0; font-weight:600; font-size:15px; text-decoration:none;">Мои навыки</a>
+    </div>
+  </section>
+
+  <section id="about" data-reveal-id="about" style="position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:100px 48px; display:grid; grid-template-columns:0.9fr 1.3fr; gap:64px; align-items:center; {{revealAbout}}">
+    <div style="aspect-ratio:4/5; width:85%; margin:0 auto; border-radius:28px; overflow:hidden; border:1px solid rgba(255,255,255,0.1);">
+      
+    <img src="uploads/hjhhh.jpg" alt="{{name}}" style="height: 118%; object-fit: cover; object-position: center center; display: block; width: 348px"></div>
+    <div>
+      <div style="font-family:'Space Grotesk',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:{{accentA}}; margin-bottom:20px;">Обо мне</div>
+      <p style="font-size:28px; line-height:1.4; font-weight:500; letter-spacing:-0.01em; margin:0 0 24px;">{{aboutHeadline}}</p>
+      <p style="font-size:17px; line-height:1.7; color:rgba(242,242,240,0.65); max-width:560px;">{{aboutBody}}</p>
+      <div style="display:flex; gap:40px; margin-top:36px;">
+        <sc-for list="{{stats}}" as="stat" hint-placeholder-count="3">
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:32px; color:{{accentB}};">{{stat.value}}</div>
+            <div style="font-size:13px; color:rgba(242,242,240,0.5); margin-top:4px;">{{stat.label}}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" data-reveal-id="skills" style="position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:60px 48px 120px; {{revealSkills}}">
+    <div style="font-family:'Space Grotesk',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:{{accentA}}; margin-bottom:16px;">Навыки</div>
+    <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(32px,4vw,52px); letter-spacing:-0.02em; margin:0 0 48px; max-width:720px;">{{skillsHeadline}}</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:20px;">
+      <sc-for list="{{skillGroups}}" as="group" hint-placeholder-count="4">
+        <div style="background:rgba(255,255,255,0.04); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.09); border-radius:20px; padding:28px; transition:transform .2s;" style-hover="transform:translateY(-4px); border-color:{{group.accent}}55;">
+          <div style="width:44px; height:44px; border-radius:12px; background:{{group.accent}}22; border:1px solid {{group.accent}}44; margin-bottom:20px;"></div>
+          <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:19px; margin-bottom:10px;">{{group.title}}</div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <sc-for list="{{group.tags}}" as="tag" hint-placeholder-count="3">
+              <span style="font-size:13px; padding:6px 12px; border-radius:100px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); color:rgba(242,242,240,0.75);">{{tag}}</span>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="work" data-reveal-id="work" style="position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:0 48px 120px; {{revealWork}}">
+    <div style="font-family:'Space Grotesk',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:{{accentB}}; margin-bottom:16px;">Проекты и обложки</div>
+    <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(32px,4vw,52px); letter-spacing:-0.02em; margin:0 0 48px; max-width:720px;">{{workHeadline}}</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:20px;">
+      <sc-for list="{{covers}}" as="cover" hint-placeholder-count="6">
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="aspect-ratio:1/1; border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); position:relative;">
+            <image-slot id="{{cover.id}}" shape="rect" src="{{cover.src}}" style="width:100%; height:100%;"></image-slot>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="music" data-reveal-id="music" style="position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:0 48px 120px; {{revealMusic}}">
+    <div style="font-family:'Space Grotesk',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:{{accentB}}; margin-bottom:16px;">Музыка</div>
+    <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(32px,4vw,52px); letter-spacing:-0.02em; margin:0 0 40px; max-width:720px;">{{musicHeadline}}</h2>
+    <div style="background:rgba(255,255,255,0.04); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.09); border-radius:20px; overflow:hidden;">
+      <sc-for list="{{tracks}}" as="track" hint-placeholder-count="5">
+        <div style="display:flex; align-items:center; gap:20px; padding:16px 24px; border-bottom:1px solid rgba(255,255,255,0.06);">
+          <span style="flex:none; width:24px; font-family:'Space Grotesk',monospace; font-size:14px; color:rgba(242,242,240,0.4); text-align:right;">{{track.number}}</span>
+          <button onClick="{{track.toggle}}" style="flex:none; width:44px; height:44px; border-radius:50%; border:none; cursor:pointer; background:{{track.accent}}; display:flex; align-items:center; justify-content:center;" style-hover="opacity:0.85;">
+            <sc-if value="{{track.playing}}" hint-placeholder-val="{{false}}">
+              <div style="display:flex; gap:4px;">
+                <div style="width:4px; height:14px; background:#0a0a0c; border-radius:1px;"></div>
+                <div style="width:4px; height:14px; background:#0a0a0c; border-radius:1px;"></div>
+              </div>
+            </sc-if>
+            <sc-if value="{{track.notPlaying}}" hint-placeholder-val="{{true}}">
+              <div style="width:0; height:0; margin-left:3px; border-top:7px solid transparent; border-bottom:7px solid transparent; border-left:11px solid #0a0a0c;"></div>
+            </sc-if>
+            <sc-if value="{{track.loading}}" hint-placeholder-val="{{false}}">
+              <div style="width:16px; height:16px; border-radius:50%; border:2px solid rgba(10,10,12,0.25); border-top-color:#0a0a0c; animation:spin .7s linear infinite;"></div>
+            </sc-if>
+          </button>
+          <div style="flex:1; min-width:0;">
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16px;">{{track.title}}</div>
+          </div>
+          <div style="flex:none; width:200px; display:flex; align-items:center; gap:10px;">
+            <div onClick="{{track.onSeek}}" style="flex:1; height:14px; display:flex; align-items:center; cursor:pointer;">
+              <div style="width:100%; height:3px; border-radius:2px; background:rgba(255,255,255,0.1); position:relative; overflow:visible;">
+                <div style="position:absolute; left:0; top:0; height:100%; border-radius:2px; background:{{track.accent}}; width:{{track.progressPct}};"></div>
+                <div style="position:absolute; top:50%; left:{{track.progressPct}}; width:10px; height:10px; border-radius:50%; background:{{track.accent}}; transform:translate(-50%,-50%);"></div>
+              </div>
+            </div>
+            <span style="font-family:'Space Grotesk',monospace; font-size:12px; color:rgba(242,242,240,0.45); width:80px; text-align:right;">{{track.timeLabel}}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <p style="font-size:13px; color:rgba(242,242,240,0.35); margin-top:16px;">{{musicNote}}</p>
+  </section>
+
+  <section id="logos" data-reveal-id="logos" style="position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:0 48px 120px; {{revealLogos}}">
+    <div style="font-family:'Space Grotesk',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:{{accentA}}; margin-bottom:16px;">Галерея логотипов</div>
+    <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(32px,4vw,52px); letter-spacing:-0.02em; margin:0 0 48px; max-width:720px;">{{logosHeadline}}</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px;">
+      <sc-for list="{{logos}}" as="logo" hint-placeholder-count="6">
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="aspect-ratio:1/1; border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); background:#f2f2f0;">
+            <image-slot id="{{logo.id}}" shape="rect" src="{{logo.src}}" placeholder="Логотип" fit="contain" style="width:100%; height:100%;"></image-slot>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="contact" data-reveal-id="contact" style="position:relative; z-index:1; padding:0 48px 120px; {{revealContact}}">
+    <div style="max-width:1100px; margin:0 auto; background:rgba(255,255,255,0.04); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.1); border-radius:32px; padding:72px 56px; text-align:center; position:relative; overflow:hidden;">
+      <div style="position:absolute; top:-40%; left:50%; transform:translateX(-50%); width:600px; height:400px; background:radial-gradient(ellipse, {{accentA}}22 0%, transparent 70%); pointer-events:none;"></div>
+      <div style="position:relative;">
+        <div style="font-family:'Space Grotesk',monospace; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:{{accentA}}; margin-bottom:20px;">Контакты</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(32px,5vw,64px); letter-spacing:-0.03em; margin:0 0 24px;">{{contactHeadline}}</h2>
+        <p style="font-size:18px; color:rgba(242,242,240,0.65); max-width:560px; margin:0 auto 40px;">{{contactSub}}</p>
+        <a href="mailto:{{email}}" style="display:inline-block; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:clamp(20px,3vw,32px); color:{{accentB}}; text-decoration:none; border-bottom:2px solid {{accentB}}44; padding-bottom:6px;">{{email}}</a>
+        <div style="display:flex; justify-content:center; gap:28px; margin-top:44px;">
+          <sc-for list="{{socials}}" as="soc" hint-placeholder-count="3">
+            <a href="{{soc.href}}" style="font-size:14px; font-weight:500; color:rgba(242,242,240,0.6); text-decoration:none; padding:10px 18px; border-radius:100px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);" style-hover="color:#0a0a0c; background:{{accentA}};">{{soc.label}}</a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="position:relative; z-index:1; text-align:center; padding:32px; font-size:13px; color:rgba(242,242,240,0.35); border-top:1px solid rgba(255,255,255,0.06);">
+    © {{year}} {{name}} — сделано с вниманием к деталям
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1000},&quot;name&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Александр Кулисинский&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;email&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;chutulok@list.ru&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;accentA&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#c8ff4d&quot;,&quot;options&quot;:[&quot;#c8ff4d&quot;,&quot;#7cf5d4&quot;,&quot;#ff5d7c&quot;,&quot;#5db8ff&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Акценты&quot;},&quot;accentB&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#ffb85d&quot;,&quot;options&quot;:[&quot;#7cf5d4&quot;,&quot;#c8ff4d&quot;,&quot;#ffb85d&quot;,&quot;#c85dff&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Акценты&quot;},&quot;heroLine1&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Проектирую интерфейсы,&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;heroLine2&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;которые запоминаются&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;heroSub&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Создаю то, что продаёт&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+class Component extends DCLogic {
+  state = { playingId: null, progress: {}, duration: {}, elapsed: {}, loading: {}, revealed: {} };
+  audios = {};
+
+  componentDidMount() {
+    const targets = document.querySelectorAll('[data-reveal-id]');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('data-reveal-id');
+          this.setState(s => ({ revealed: { ...s.revealed, [id]: true } }));
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    targets.forEach(t => io.observe(t));
+    this._io = io;
+  }
+
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    Object.values(this.audios).forEach(a => a.pause());
+  }
+
+  revealStyle(id) {
+    const visible = this.state.revealed[id];
+    return 'opacity:' + (visible ? 1 : 0) + '; transform:translateY(' + (visible ? 0 : 36) + 'px); transition:opacity .9s ease, transform .9s ease;';
+  }
+
+  getAudio(id, src) {
+    if (!this.audios[id]) {
+      const a = new Audio(src);
+      a.preload = 'metadata';
+      a.addEventListener('timeupdate', () => {
+        if (a.currentTime >= 30) {
+          a.pause();
+          a.currentTime = 0;
+          this.setState(s => ({ playingId: null, progress: { ...s.progress, [id]: 0 }, elapsed: { ...s.elapsed, [id]: 0 } }));
+          return;
+        }
+        const pct = (a.currentTime / 30) * 100;
+        this.setState(s => ({ progress: { ...s.progress, [id]: pct }, elapsed: { ...s.elapsed, [id]: a.currentTime } }));
+      });
+      a.addEventListener('loadedmetadata', () => {
+        this.setState(s => ({ duration: { ...s.duration, [id]: a.duration } }));
+      });
+      a.addEventListener('playing', () => {
+        this.setState(s => ({ loading: { ...s.loading, [id]: false } }));
+      });
+      a.addEventListener('waiting', () => {
+        this.setState(s => ({ loading: { ...s.loading, [id]: true } }));
+      });
+      a.addEventListener('ended', () => {
+        a.currentTime = 0;
+        this.setState({ playingId: null });
+      });
+      this.audios[id] = a;
+    }
+    return this.audios[id];
+  }
+
+  seek(id, src, e) {
+    const audio = this.getAudio(id, src);
+    const rect = e.currentTarget.getBoundingClientRect();
+    const ratio = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
+    audio.currentTime = ratio * 30;
+    this.setState(s => ({ progress: { ...s.progress, [id]: ratio * 100 }, elapsed: { ...s.elapsed, [id]: ratio * 30 } }));
+  }
+
+  togglePlay(id, src) {
+    const audio = this.getAudio(id, src);
+    if (this.state.playingId === id) {
+      audio.pause();
+      this.setState({ playingId: null });
+      return;
+    }
+    if (this.state.playingId) {
+      const prev = this.audios[this.state.playingId];
+      if (prev) prev.pause();
+    }
+    if (audio.currentTime >= 30) audio.currentTime = 0;
+    this.setState(s => ({ playingId: id, loading: { ...s.loading, [id]: true } }));
+    audio.play().catch(() => {
+      this.setState(s => ({ loading: { ...s.loading, [id]: false } }));
+    });
+  }
+
+  formatTime(seconds) {
+    if (!seconds || !isFinite(seconds)) return '0:00';
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return m + ':' + String(s).padStart(2, '0');
+  }
+
+  renderVals() {
+    const trackDefs = [
+      { id: 't1', title: 'Adrenaline', audioSrc: 'uploads/17.mp3', accent: this.props.accentA ?? '#c8ff4d' },
+      { id: 't2', title: 'Death Piano', audioSrc: 'uploads/Death piano.mp3', accent: this.props.accentB ?? '#ffb85d' },
+      { id: 't3', title: 'Waters', audioSrc: 'uploads/Waters.mp3', accent: this.props.accentA ?? '#c8ff4d' },
+      { id: 't4', title: 'Energy', audioSrc: 'uploads/16.mp3', accent: this.props.accentB ?? '#ffb85d' },
+      { id: 't5', title: 'Kart', audioSrc: 'uploads/@spiry + @takko DambldorTruck 145bpm.mp3', accent: this.props.accentA ?? '#c8ff4d' },
+      { id: 't6', title: 'Нюша', audioSrc: 'uploads/angelscry.mp3', accent: this.props.accentB ?? '#ffb85d' },
+      { id: 't7', title: 'Chris', audioSrc: 'uploads/Christ+.mp3', accent: this.props.accentA ?? '#c8ff4d' },
+      { id: 't8', title: '80s', audioSrc: 'uploads/80s.mp3', accent: this.props.accentB ?? '#ffb85d' },
+      { id: 't9', title: 'Granular', audioSrc: 'uploads/GRANURAL.mp3', accent: this.props.accentA ?? '#c8ff4d' },
+      { id: 't10', title: 'Solar', audioSrc: 'uploads/DreamSolar @spiry.mp3', accent: this.props.accentB ?? '#ffb85d' },
+      { id: 't11', title: 'Gruz 51', audioSrc: 'uploads/VaL51.mp3', accent: this.props.accentA ?? '#c8ff4d' },
+      { id: 't12', title: 'OXY', audioSrc: 'uploads/OXYdrunz.mp3', accent: this.props.accentB ?? '#ffb85d' },
+      { id: 't13', title: 'Phonk', audioSrc: 'uploads/40.mp3', accent: this.props.accentA ?? '#c8ff4d' },
+      { id: 't14', title: 'Sols', audioSrc: 'uploads/Souls alien.mp3', accent: this.props.accentB ?? '#ffb85d' },
+      { id: 't15', title: 'Of Flora', audioSrc: 'uploads/Born of flora.mp3', accent: this.props.accentA ?? '#c8ff4d' },
+    ];
+    const tracks = trackDefs.map((t, i) => {
+      const playing = this.state.playingId === t.id;
+      const pct = this.state.progress[t.id] ?? 0;
+      const elapsed = this.state.elapsed[t.id] ?? 0;
+      const loading = playing && this.state.loading[t.id];
+      return {
+        ...t,
+        number: i + 1,
+        playing: playing && !loading,
+        notPlaying: !playing && !loading,
+        loading,
+        progressPct: pct + '%',
+        timeLabel: this.formatTime(elapsed) + ' / 0:30',
+        toggle: () => this.togglePlay(t.id, t.audioSrc),
+        onSeek: (e) => this.seek(t.id, t.audioSrc, e),
+      };
+    });
+    return {
+      revealAbout: this.revealStyle('about'),
+      revealSkills: this.revealStyle('skills'),
+      revealWork: this.revealStyle('work'),
+      revealMusic: this.revealStyle('music'),
+      revealLogos: this.revealStyle('logos'),
+      revealContact: this.revealStyle('contact'),
+      accentA: this.props.accentA ?? '#c8ff4d',
+      accentB: this.props.accentB ?? '#7cf5d4',
+      name: this.props.name ?? 'Алекс Морозов',
+      heroLine1: this.props.heroLine1 ?? 'Проектирую интерфейсы,',
+      heroLine2: this.props.heroLine2 ?? 'которые запоминаются',
+      heroSub: this.props.heroSub ?? 'UX/UI дизайнер с фокусом на продуктовые интерфейсы, дизайн-системы и смелые визуальные решения.',
+      aboutHeadline: this.props.aboutHeadline ?? 'Дизайнер и композитор. 22 года, отец.',
+      aboutBody: this.props.aboutBody ?? 'Создаю обложки для артистов и занимаюсь UI/UX дизайном, а также пишу музыку для артистов, реклам, фильмов и сериалов.',
+      stats: [
+        { value: '22', label: 'года' },
+        { value: '2', label: 'направления' },
+        { value: '∞', label: 'проектов впереди' },
+      ],
+      skillsHeadline: 'Дизайн и музыка — два направления, один почерк',
+      skillGroups: [
+        { title: 'Дизайн обложек', accent: this.props.accentA ?? '#c8ff4d', tags: ['Обложки для артистов', 'Blender', 'Photoshop'] },
+        { title: 'UI/UX дизайн', accent: this.props.accentB ?? '#7cf5d4', tags: ['Интерфейсы', 'Прототипы', 'Нейросети'] },
+        { title: 'Музыка', accent: this.props.accentA ?? '#c8ff4d', tags: ['FL Studio', 'Артисты', 'Реклама'] },
+        { title: 'Музыка для видео', accent: this.props.accentB ?? '#7cf5d4', tags: ['Фильмы', 'Сериалы', 'Саунд-дизайн'] },
+      ],
+      musicHeadline: 'Избранные треки',
+      musicNote: 'Плеер с реальным аудио — нажмите play, чтобы прослушать трек.',
+      tracks,
+      workHeadline: 'Обложки для артистов и проекты в UI/UX',
+      covers: [
+        { id: 'cover-1', title: 'SPIRY', tag: 'Обложка трека', src: 'uploads/2026-07-23 02.06.47.jpg' },
+        { id: 'cover-2', title: 'Cash Whisperer', tag: 'Обложка трека', src: 'uploads/2026-07-23 02.06.31.jpg' },
+        { id: 'cover-3', title: 'New Collection', tag: 'Обложка / коллаж', src: 'uploads/2026-07-23 02.06.08.jpg' },
+        { id: 'cover-4', title: 'Hater', tag: 'Обложка трека', src: 'uploads/2026-07-23 02.05.33.jpg' },
+        { id: 'cover-5', title: 'Генезис', tag: 'Обложка трека', src: 'uploads/2026-07-23 02.05.07.jpg' },
+        { id: 'cover-6', title: 'Elle Par', tag: 'Обложка трека', src: 'uploads/2026-07-23 02.04.59.jpg' },
+        { id: 'cover-7', title: 'S + Style', tag: 'Обложка трека', src: 'uploads/cOVER.jpg' },
+        { id: 'cover-8', title: 'Night', tag: 'Обложка трека', src: 'uploads/фулл2.jpg' },
+      ],
+      logosHeadline: 'Логотипы и айдентика для артистов',
+      logos: [
+        { id: 'logo-1', src: 'uploads/AK+.png' },
+        { id: 'logo-2', src: 'uploads/Лого.jpg' },
+        { id: 'logo-3', src: 'uploads/logo PP.png' },
+        { id: 'logo-4', src: 'uploads/Spiry.png' },
+      ],
+      contactHeadline: 'Есть идея для проекта?',
+      contactSub: 'Открыт(а) для новых проектов и коллабораций — напишите, обсудим детали.',
+      email: this.props.email ?? 'hello@alexmorozov.design',
+      socials: [
+        { label: 'Telegram', href: 'https://t.me/djkulich' },
+        { label: 'Instagram', href: 'https://www.instagram.com/kulisinskiy' },
+      ],
+      year: new Date().getFullYear(),
+    };
+  }
+}
+</script>
+</body>
+</html>
